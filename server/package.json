@@ -1,0 +1,28 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:http": "nodemon ./http-server.js",
+    "start": "npm run start:db -d && npm run migrate:latest && npm run seeds && nodemon ./custom-express-server.js",
+    "start:db": "docker-compose up -d",
+    "migrate:latest": "knex migrate:latest",
+    "seeds": "knex seeds:run",
+    "stop": "docker-compose down"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "knex": "^0.20.10",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.2",
+    "pg": "^7.18.2",
+    "uuid": "^7.0.1"
+  }
+}
